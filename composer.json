@@ -1,0 +1,19 @@
+"repositories": [
+    {
+        "type": "package",
+        "package": {
+            "name": "jflefebvre/mvoauthphpapi",
+            "version": "dev-master",
+            "source": {
+                "url": "git://github.com/jflefebvre/mvoauthphpapi.git",
+                "type": "git",
+                "reference": "master"
+            },
+            "autoload": {
+                "psr-0" : {
+                    "Evolution\\MobileVikings" : "src"
+                }
+            }
+        }
+    }
+],
