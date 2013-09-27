@@ -1,3 +1,4 @@
+{
 "repositories": [
     {
         "type": "package",
@@ -16,4 +17,5 @@
             }
         }
     }
-],
+]
+}
