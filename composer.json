@@ -16,5 +16,5 @@
             "Evolution\\MobileVikings" : "src"
         }
     },
-    "minimum-stability": "dev",
+    "minimum-stability": "dev"
 }
