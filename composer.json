@@ -1,21 +1,20 @@
 {
-"repositories": [
-    {
-        "type": "package",
-        "package": {
-            "name": "jflefebvre/mvoauthphpapi",
-            "version": "dev-master",
-            "source": {
-                "url": "git://github.com/jflefebvre/mvoauthphpapi.git",
-                "type": "git",
-                "reference": "master"
-            },
-            "autoload": {
-                "psr-0" : {
-                    "Evolution\\MobileVikings" : "src"
-                }
-            }
+    "name": "jflefebvre/mvoauthphpapi",
+    "type": "library",
+    "description": "Mobile vikings PHP library",
+    "keywords": ["api", "client"],
+    "homepage": "https://github.com/jflefebvre/mvoauthphpapi",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Jean-François Lefebvre",
+            "email": "lefebvre.jf@gmail.com"
         }
-    }
-]
+    ],
+    "autoload": {
+        "psr-0" : {
+            "Evolution\\MobileVikings" : "src"
+        }
+    },
+    "minimum-stability": "dev",
 }
