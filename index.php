@@ -1,41 +1,24 @@
 <?php
 
-include 'EvoCurl.php';
-include 'EvoOAuth.php';
-include 'EvoMobileVikings.php';
+include "vendor/autoload.php";
 
-/*
- *  Class to integrate with Mobile Vikings API.
- *  Authenticated calls are done using xAuth and require access tokens for a user.
- * 
- *  Full documentation available on github
- *  https://github.com/jflefebvre/mvoauthphpapi
- *
- *  OAuth settings : https://mobilevikings.com/fr/account/edit/oauth-credentials/ 
- * 
- *  Ask to enable xauth for your account via e-mail : info@mobilevikings.com
- *  
- *  @author Jean-François Lefebvre <lefebvre.jf@gmail.com>
- */
+use Evolution\MobileVikings\MobileVikings;
 
-// OAuth settings
-$consumerKey = '';      
-$consumerSecret = '';   
+$consumerKey = '';
+$consumerSecret = '';
+$userName = '';
+$userPassword = '';
+$msisdn = ''; // mobile number
 
-// Mobile vikings username/password
-$userName = '';        
-$userPassword = '';    
+$mv = new MobileVikings($consumerKey, $consumerSecret);
 
-$msisdn = ''; // phone number format example +32494688701
-
-$mv = new EvoMobileVikings($consumerKey, $consumerSecret);
 
 $response = $mv->fetch_access_token_via_xauth($userName, $userPassword);
 
-$response = $mv->get_msisdn_list();
-
 // Methods available
 // 
+
+$response = $mv->get_msisdn_list();
 // $response = $mv->get_price_plan_details($msisdn);
 // $response = $mv->get_sim_balance($msisdn);
 // $response = $mv->get_history($msisdn);
