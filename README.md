@@ -1,9 +1,9 @@
 mvoauthphpapi
 =============
 
-Mobile vikings API php client PSR0
+Mobile vikings API php client
 
-Add the following lines in your composer.json. (
+Add the following lines in your composer.json. 
 ```
     "repositories": [
       {
@@ -16,8 +16,10 @@ Add the following lines in your composer.json. (
 	}
 ```
 
-You must contact the helpdesk () to ask to activate xauth.
-Check you oauth settings in your account settings.
+You must contact the [mobile vikings helpdesk](info@mobilevikings.com) to ask to activate xauth.
+Check your oauth settings in your account settings.
+
+[Mobile Vikings API documentation](https://mobilevikings.com/api/2.0/doc/)
 
 The use of the library is pretty straightforward :
 
@@ -39,12 +41,13 @@ $mv = new MobileVikings($consumerKey, $consumerSecret);
 
 $response = $mv->fetch_access_token_via_xauth($userName, $userPassword);
 
-// $response = $mv->get_msisdn_list();
-
 // Methods available
 // 
-// $response = $mv->get_price_plan_details($msisdn);
+
 $response = $mv->get_sim_balance($msisdn);
+
+// $response = $mv->get_msisdn_list();
+// $response = $mv->get_price_plan_details($msisdn);
 // $response = $mv->get_history($msisdn);
 // $response = $mv->get_usage($msisdn);
 // $response = $mv->get_sim_info($msisdn);
@@ -55,5 +58,3 @@ $response = $mv->get_sim_balance($msisdn);
 var_dump(json_decode($response));
 
 ```
-
-[Mobile Vikings API documentation](https://mobilevikings.com/api/2.0/doc/)
