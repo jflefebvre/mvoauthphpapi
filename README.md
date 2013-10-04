@@ -16,7 +16,7 @@ Add the following lines in your composer.json.
 	}
 ```
 
-You must contact the [mobile vikings helpdesk](info@mobilevikings.com) to ask to activate xauth.
+You must contact the [mobile vikings helpdesk](mailto:info@mobilevikings.com) to ask to activate xauth.
 Check your oauth settings in your account settings.
 
 [Mobile Vikings API documentation](https://mobilevikings.com/api/2.0/doc/)
