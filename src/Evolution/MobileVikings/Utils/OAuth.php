@@ -1,5 +1,10 @@
 <?php
-class EvoOAuth
+
+namespace Evolution\MobileVikings\Utils;
+
+use Evolution\MobileVikings\Utils\Curl;
+
+class OAuth
 {
   public $version = '1.0';
 
@@ -17,7 +22,7 @@ class EvoOAuth
   protected $useSSL = false;
   protected $followLocation = false;
   protected $headers = array();
-  protected $userAgent = 'EvoOAuth (https://github.com/jflefebvre/mvoauthphpapi)';
+  protected $userAgent = 'Evolution OAuth (https://github.com/jflefebvre/mvoauthphpapi)';
   protected $connectionTimeout = 5;
   protected $requestTimeout = 30;
 
@@ -384,11 +389,11 @@ class EvoOAuth
     $this->consumerKey = $consumerKey;
     $this->consumerSecret = $consumerSecret;
     $this->signatureMethod = $signatureMethod;
-    $this->curl = EvoCurl::getInstance();
+    $this->curl = Curl::getInstance();
   }
 }
 
-class EvoOAuthResponse
+class OAuthResponse
 {
   private $__resp;
   protected $debug = false;
@@ -401,7 +406,7 @@ class EvoOAuthResponse
   public function __get($name)
   {
     if($this->__resp->code != 200)
-      EvoOAuthException::raise($this->__resp, $this->debug);
+      OAuthException::raise($this->__resp, $this->debug);
 
     parse_str($this->__resp->data, $result);
     foreach($result as $k => $v)
@@ -418,7 +423,7 @@ class EvoOAuthResponse
   }
 }
 
-class EvoOAuthException extends Exception
+class OAuthException extends \Exception
 {
   public static function raise($response, $debug)
   {
@@ -427,13 +432,13 @@ class EvoOAuthException extends Exception
     switch($response->code)
     {
       case 400:
-        throw new EvoOAuthBadRequestException($message, $response->code);
+        throw new OAuthBadRequestException($message, $response->code);
       case 401:
-        throw new EvoOAuthUnauthorizedException($message, $response->code);
+        throw new OAuthUnauthorizedException($message, $response->code);
       default:
-        throw new EvoOAuthException($message, $response->code);
+        throw new OAuthException($message, $response->code);
     }
   }
 }
-class EvoOAuthBadRequestException extends EvoOAuthException{}
-class EvoOAuthUnauthorizedException extends EvoOAuthException{}
+class OAuthBadRequestException extends OAuthException{}
+class OAuthUnauthorizedException extends OAuthException{}

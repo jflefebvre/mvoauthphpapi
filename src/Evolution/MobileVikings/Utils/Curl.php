@@ -1,5 +1,8 @@
 <?php
-class EvoCurl
+
+namespace Evolution\MobileVikings\Utils;
+
+class Curl
 {
   const timeout = 3;
   static $inst = null;
@@ -19,7 +22,7 @@ class EvoCurl
   {
     if(self::$singleton == 0)
     {
-      throw new Exception('This class cannot be instantiated by the new keyword.  You must instantiate it using: $obj = EvoCurl::getInstance();');
+      throw new Exception('This class cannot be instantiated by the new keyword.  You must instantiate it using: $obj = Evolution Curl::getInstance();');
     }
 
     $this->mc = curl_multi_init();
@@ -40,7 +43,7 @@ class EvoCurl
     $done = array('handle' => $ch);
     $this->storeResponse($done, false);
     $this->startTimer($key);
-    return new EvoCurlManager($key);
+    return new CurlManager($key);
   }
 
   public function addCurl($ch)
@@ -59,7 +62,7 @@ class EvoCurl
           $code = $this->execStatus = curl_multi_exec($this->mc, $this->running);
       } while ($this->execStatus === CURLM_CALL_MULTI_PERFORM);
 
-      return new EvoCurlManager($key);
+      return new CurlManager($key);
     }
     else
     {
@@ -105,7 +108,7 @@ class EvoCurl
 
   public static function getSequence()
   {
-    return new EvoSequence(self::$timers);
+    return new Sequence(self::$timers);
   }
 
   public static function getTimers()
@@ -175,14 +178,14 @@ class EvoCurl
     if(self::$inst == null)
     {
       self::$singleton = 1;
-      self::$inst = new EvoCurl();
+      self::$inst = new Curl();
     }
 
     return self::$inst;
   }
 }
 
-class EvoCurlManager
+class CurlManager
 {
   private $key;
   private $evoCurl;
@@ -190,7 +193,7 @@ class EvoCurlManager
   public function __construct($key)
   {
     $this->key = $key;
-    $this->evoCurl = EvoCurl::getInstance();
+    $this->evoCurl = Curl::getInstance();
   }
 
   public function __get($name)
